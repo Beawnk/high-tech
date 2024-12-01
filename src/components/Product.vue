@@ -6,7 +6,7 @@
             </div>
             <div class="product-info">
                 <h3>{{ product.name }}</h3>
-                <p>{{ formatCurrency(product.price) }}</p>
+                <p>{{ product.price }}</p>
             </div>
             Produto: {{ product }}
         </div>
@@ -15,16 +15,24 @@
 
 <script setup>
 import { ref, watch, onMounted } from 'vue';
-import { formatCurrency } from "../composables/formatCurrency.js";
+import { formatCurrency } from "../composables/formatCurrency.js"; 
 
 const props = defineProps(['productId']);
 
 const product = ref({});
-const getProduct = async (id) => {
-    const res = await fetch(`./src/api/products/${id}/data.json`);
-    const data = await res.json();
-    product.value = data;
-};
+
+function getProduct(id) {
+    fetch(`./src/api/products/${id}/data.json`)
+        .then((res) => res.json())
+        .then((data) => {
+            product.value = data;
+            product.value.price = formatCurrency(product.value.price);
+            console.log(product.value.price);
+        })
+        .catch((error) => {
+            console.error('Error fetching product:', error);
+        });
+}
 
 watch(() => props.productId, (newId) => {
     getProduct(newId);
@@ -32,6 +40,7 @@ watch(() => props.productId, (newId) => {
 
 onMounted(() => {
     getProduct(props.productId);
+    console.log(props.productId);
 });
 </script>
 

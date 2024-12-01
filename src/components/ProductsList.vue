@@ -18,20 +18,26 @@ import { ref, onMounted } from 'vue';
 import Product from "../components/Product.vue";
 import { formatCurrency } from "../composables/formatCurrency.js";
 
-components: { Product };
-
 const products = ref([]);
 const productModal = ref(false);
 const dataProductId = ref(null);
+
 const getProducts = async () => {
-    const res = await fetch("./src/api/products.json");
-    const data = await res.json();
-    products.value = data;
+    try {
+        const res = await fetch("./src/api/products.json");
+        if (!res.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await res.json();
+        products.value = data;
+    } catch (error) {
+        console.error('Error fetching products:', error);
+    }
 };
 
 const showProductModal = (id) => {
-    productModal.value = true;
     dataProductId.value = id;
+    productModal.value = true;
 };
 
 onMounted(() => {
