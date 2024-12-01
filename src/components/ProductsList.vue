@@ -1,6 +1,6 @@
 <template> 
     <section class="products">
-      <div class="product" v-for="product in products" :key="product.id" @click="productModal = true; getProductId(product.id)">
+      <div class="product" v-for="product in products" :key="product.id" @click="showProductModal(product.id)">
         <div class="product-img">
           <img :src="product.img" :alt="product.name" />
         </div>
@@ -13,41 +13,30 @@
     <Product v-if="productModal" :product-id="dataProductId"/>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
 import Product from "../components/Product.vue";
+import { formatCurrency } from "../composables/formatCurrency.js";
 
-export default {
-    components: {Product},
-    data() {
-        return {
-            products: [],
-            productModal: false,
-            dataProductId: null,
-        };
-    },
-    methods: {
-        getProducts() {
-            fetch("./src/api/products.json")
-            .then((res) => res.json())
-            .then((res) => {
-              this.products = res;
-            });
-        },
-        formatCurrency(value) {
-            return value.toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-            });
-        },
-        getProductId(id) {
-            this.dataProductId = id;
-        }
-    },
-    created() {
-        this.getProducts();
-    },
-}
+components: { Product };
 
+const products = ref([]);
+const productModal = ref(false);
+const dataProductId = ref(null);
+const getProducts = async () => {
+    const res = await fetch("./src/api/products.json");
+    const data = await res.json();
+    products.value = data;
+};
+
+const showProductModal = (id) => {
+    productModal.value = true;
+    dataProductId.value = id;
+};
+
+onMounted(() => {
+    getProducts();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -63,7 +52,6 @@ $products-max-width: 900px;
         display: flex;
         margin-bottom: 20px;
         padding: 10px;
-        border: 1px solid #ccc;
         border-radius: variables.$br-medium;
         box-shadow: variables.$shadow;
         &:last-child {
