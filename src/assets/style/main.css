@@ -1,0 +1,56 @@
+@font-face {font-family: 'NunitoSans-regular'; src: url('/src/assets/fonts/NunitoSans_7pt-Regular.ttf');}
+@font-face {font-family: 'NunitoSans-semibold'; src: url('/src/assets/fonts/NunitoSans_7pt-SemiBold.ttf');}
+
+:root {
+    /* fonts  */
+    --ff-regular: 'NunitoSans-regular', sans-serif;
+    --ff-semibold: 'NunitoSans-semibold', sans-serif;
+
+    /* spacing  */
+    --side: 80px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul { 
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+h1, h2, h3 {
+    font-family: var(--ff-semibold);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+a, p, label, span,
+h4, h5, h6 {
+    font-family: var(--ff-regular);
+}
+
+p {
+    margin: 0;
+}
+
+#app {
+    padding: 0 var(--side);
+}

@@ -1,0 +1,22 @@
+{
+    "id": "notebook",
+    "name": "Notebook",
+    "price": 3000,
+    "descrição": "Notebook com 8GB de RAM, 1TB de HD e processador i5.",
+    "stock": 12,
+    "img": "./src/assets/img/notebook-foto.jpg",
+    "reviews": [
+        {
+            "id": 1,
+            "name": "João",
+            "rating": 5,
+            "comment": "Ótimo notebook, rápido e leve."
+        },
+        {
+            "id": 2,
+            "name": "Maria",
+            "rating": 4,
+            "comment": "Gostei muito, mas a bateria poderia durar mais."
+        }
+    ]
+}

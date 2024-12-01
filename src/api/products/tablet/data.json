@@ -1,0 +1,22 @@
+{
+    "id": "tablet",
+    "name": "Tablet",
+    "price": 899,
+    "descrição": "Tablet com tela de alta resolução e desempenho rápido.",
+    "stock": 20,
+    "img": "./src/assets/img/tablet-foto.jpg",
+    "reviews": [
+        {
+            "id": 1,
+            "name": "Lucas",
+            "rating": 5,
+            "comment": "Perfeito para assistir vídeos e ler livros."
+        },
+        {
+            "id": 2,
+            "name": "Mariana",
+            "rating": 4,
+            "comment": "Muito bom, mas poderia ter mais armazenamento."
+        }
+    ]
+}
