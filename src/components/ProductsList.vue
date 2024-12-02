@@ -1,6 +1,5 @@
 <template> 
     <section class="products" :class="{open: productModal}">
-        <h1>Produtos</h1>
         <div class="product" v-for="product in products" :key="product.id" @click="showProductModal(product.id)">
             <div class="product-img">
                 <img :src="product.img" :alt="product.name" />
@@ -11,7 +10,9 @@
             </div>
         </div>
     </section>
-    <Transition name="fade"><Product v-if="productModal" :product-id="dataProductId" @toggle-modal="productModal = false" /></Transition>
+    <Transition name="fade">
+        <Product v-if="productModal" :product-id="dataProductId" @toggle-modal="productModal = false" />
+    </Transition>
     
 </template>
 
@@ -55,11 +56,6 @@ $products-max-width: 900px;
 .products {
     max-width: $products-max-width;
     margin: 0 auto;
-    h1 {
-        color: variables.$light-color;
-        font-size: variables.$title-big;
-        margin-bottom: 20px;
-    }
     .product {
         cursor: pointer;
         display: flex;

@@ -34,7 +34,7 @@ a {
     color: inherit;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
     font-family: var(--ff-semibold);
 }
 
@@ -43,8 +43,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-a, p, label, span,
-h4, h5, h6 {
+a, p, label, span{
     font-family: var(--ff-regular);
 }
 

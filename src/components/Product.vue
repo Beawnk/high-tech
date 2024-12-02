@@ -13,11 +13,11 @@
                     <h4>Descrição</h4>
                     <p>{{ product.description }}</p>
                 </div>
-                <div class="reviews" @click="showReviews = !showReviews">
-                    <h4>Reviews</h4>
+                <div class="reviews" :class="{active: showReviews}">
+                    <h4 @click="showReviews = !showReviews" >Reviews</h4>
                     <div class="review" v-for="review in product.reviews" :key="review.id" v-show="showReviews">
                         <div class="rating">
-                            <h3>{{ review.name }}</h3>
+                            <h5>{{ review.name }}</h5>
                             <span>{{ review.rating }}/5</span>
                         </div>
                         <p class="comment">{{ review.comment }}</p>
@@ -73,6 +73,28 @@ onMounted(() => {
 $modal-width: 1200px;
 $modal-padding: 20px;
 
+@include variables.keyframes(slide-down) {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px); 
+    }
+    100% { 
+        opacity: 1;
+        transform: translateY(0px); 
+    }
+}
+
+@include variables.keyframes(hide) {
+    0% {
+        opacity: 1;
+        transform: translateY(0px); 
+    }
+    100% { 
+        opacity: 0;
+        transform: translateY(-20px); 
+    }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
@@ -110,6 +132,7 @@ $modal-padding: 20px;
             }
         }
         .product-info {
+            margin-bottom: 40px;
             h3 {
                 color: variables.$secondary-color;
                 font-size: variables.$title-medium;
@@ -117,13 +140,14 @@ $modal-padding: 20px;
             }
             p {
                 color: variables.$primary-color;
-                font-size: variables.$text-medium;
+                font-size: variables.$text-big;
             }
         }
         .product-description {
+            margin-bottom: 40px;
             h4 {
-                color: variables.$primary-color;
-                font-size: variables.$title-small;
+                color: variables.$secondary-color;
+                font-size: variables.$subtitle-medium;
             }
             p {
                 color: variables.$primary-color;
@@ -132,17 +156,52 @@ $modal-padding: 20px;
         }
         .reviews {
             h4 {
-                color: variables.$primary-color;
-                font-size: variables.$title-small;
+                color: variables.$secondary-color;
+                font-size: variables.$subtitle-medium;
+                margin-bottom: 10px;
                 cursor: pointer;
+                display: flex;
+                align-items: center;
+                &::after {
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    display: block;
+                    background-image: url(../assets/img/open-arrow.png);
+                    background-size: 10px;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    margin-left: 5px;
+                    transition: variables.$transition;
+                }
+            }
+            &.active {
+                h4 {
+                    &::after {
+                        transform: rotate(-180deg);
+                    }
+                }
+                .review {
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
             }
             .review {
+                margin-bottom: 15px;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition-property: overlay display opacity transform;
+                transition-duration: 0.5s;
+                transition-behavior: allow-discrete;
+                @include variables.animation('slide-down 0.5s');
                 .rating {
                     display: flex;
-                    justify-content: space-between;
-                    h3 {
+                    align-items: center;
+                    margin-bottom: 5px;
+                    h5 {
                         color: variables.$primary-color;
-                        font-size: variables.$title-small;
+                        font-size: variables.$subtitle-small;
+                        margin-right: 5px;
                     }
                     span {
                         color: variables.$primary-color;

@@ -33,6 +33,9 @@ $br-large: 10px;
 //padding
 $btn-padding: 15px 30px;
 
+//transition
+$transition: all 0.3s ease;
+
 .btn {
     font-family: $ff-semibold;
     font-size: $text-medium;
@@ -60,4 +63,30 @@ $btn-padding: 15px 30px;
     position: absolute;
     top: 20px;
     right: 20px;
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+      @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+      @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+      @content;
+    }
+    @-o-keyframes #{$animation-name} {
+      @content;
+    }  
+    @keyframes #{$animation-name} {
+      @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
 }
