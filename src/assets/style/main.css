@@ -8,6 +8,7 @@
 
     /* spacing  */
     --side: 80px;
+    --top: 40px;
 }
 
 body {
@@ -52,5 +53,6 @@ p {
 }
 
 #app {
-    padding: 0 var(--side);
+    padding: var(--top) var(--side);
+    background-image: linear-gradient(to right, #141b41 30%, #ffffff 30%);
 }

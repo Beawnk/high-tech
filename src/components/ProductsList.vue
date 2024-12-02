@@ -1,14 +1,15 @@
 <template> 
     <section class="products">
-      <div class="product" v-for="product in products" :key="product.id" @click="showProductModal(product.id)">
-        <div class="product-img">
-          <img :src="product.img" :alt="product.name" />
+        <h1>Produtos</h1>
+        <div class="product" v-for="product in products" :key="product.id" @click="showProductModal(product.id)">
+            <div class="product-img">
+                <img :src="product.img" :alt="product.name" />
+            </div>
+            <div class="product-info">
+                <h3>{{ product.name }}</h3>
+                <p>{{ formatCurrency(product.price) }}</p>
+            </div>
         </div>
-        <div class="product-info">
-          <h3>{{ product.name }}</h3>
-          <p>{{ formatCurrency(product.price) }}</p>
-        </div>
-      </div>
     </section>
     <Product v-if="productModal" :product-id="dataProductId"/>
 </template>
@@ -52,7 +53,12 @@ $products-max-width: 900px;
 
 .products {
     max-width: $products-max-width;
-    margin: 100px auto 0 auto;
+    margin: 0 auto;
+    h1 {
+        color: variables.$light-color;
+        font-size: variables.$title-big;
+        margin-bottom: 20px;
+    }
     .product {
         cursor: pointer;
         display: flex;
@@ -60,6 +66,7 @@ $products-max-width: 900px;
         padding: 10px;
         border-radius: variables.$br-medium;
         box-shadow: variables.$shadow;
+        background-color: variables.$white-color;
         &:last-child {
             margin-bottom: 0;
         }
@@ -78,12 +85,13 @@ $products-max-width: 900px;
             justify-content: center;
             margin-left: 20px;
             h3 {
-                font-size: 20px;
+                color: variables.$secondary-color;
+                font-size: variables.$subtitle-medium;
                 margin-bottom: 10px;
             }
             p {
+                color: variables.$primary-color;
                 font-size: 18px;
-                color: #333;
             }
         }
     }

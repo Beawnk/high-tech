@@ -1,22 +1,22 @@
 {
-    "id": "headphone",
-    "name": "Headphone",
-    "price": 299,
-    "descrição": "Headphone com cancelamento de ruído e som de alta qualidade.",
-    "stock": 50,
-    "img": "./src/assets/img/headphone-foto.jpg",
-    "reviews": [
-        {
-            "id": 1,
-            "name": "Carlos",
-            "rating": 5,
-            "comment": "Excelente qualidade de som e conforto."
-        },
-        {
-            "id": 2,
-            "name": "Ana",
-            "rating": 4,
-            "comment": "Muito bom, mas poderia ser mais leve."
-        }
-    ]
+	"id": "headphone",
+	"name": "Headphone",
+	"price": 299,
+	"description": "Headphone com cancelamento de ruído e som de alta qualidade.",
+	"stock": 50,
+	"img": "./src/assets/img/headphone-foto.jpg",
+	"reviews": [
+		{
+			"id": 1,
+			"name": "Carlos",
+			"rating": 5,
+			"comment": "Excelente qualidade de som e conforto."
+		},
+		{
+			"id": 2,
+			"name": "Ana",
+			"rating": 4,
+			"comment": "Muito bom, mas poderia ser mais leve."
+		}
+	]
 }

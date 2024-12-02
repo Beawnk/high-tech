@@ -1,22 +1,22 @@
 {
-    "id": "smartwatch",
-    "name": "Smartwatch",
-    "price": 599,
-    "descrição": "Smartwatch com monitoramento de saúde e notificações inteligentes.",
-    "stock": 30,
-    "img": "./src/assets/img/smartwatch-foto.jpg",
-    "reviews": [
-        {
-            "id": 1,
-            "name": "Pedro",
-            "rating": 5,
-            "comment": "Ótimo para acompanhar atividades físicas."
-        },
-        {
-            "id": 2,
-            "name": "Laura",
-            "rating": 4,
-            "comment": "Funciona bem, mas a bateria poderia durar mais."
-        }
-    ]
+	"id": "smartwatch",
+	"name": "Smartwatch",
+	"price": 599,
+	"description": "Smartwatch com monitoramento de saúde e notificações inteligentes.",
+	"stock": 30,
+	"img": "./src/assets/img/smartwatch-foto.jpg",
+	"reviews": [
+		{
+			"id": 1,
+			"name": "Pedro",
+			"rating": 5,
+			"comment": "Ótimo para acompanhar atividades físicas."
+		},
+		{
+			"id": 2,
+			"name": "Laura",
+			"rating": 4,
+			"comment": "Funciona bem, mas a bateria poderia durar mais."
+		}
+	]
 }

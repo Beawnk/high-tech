@@ -1,22 +1,22 @@
 {
-    "id": "smartphone",
-    "name": "Smartphone",
-    "price": 1299,
-    "descrição": "Smartphone com câmera de alta qualidade e desempenho rápido.",
-    "stock": 40,
-    "img": "./src/assets/img/smartphone-foto.jpg",
-    "reviews": [
-        {
-            "id": 1,
-            "name": "Rafael",
-            "rating": 5,
-            "comment": "Câmera excelente e muito rápido."
-        },
-        {
-            "id": 2,
-            "name": "Fernanda",
-            "rating": 4,
-            "comment": "Gostei muito, mas a bateria poderia durar mais."
-        }
-    ]
+	"id": "smartphone",
+	"name": "Smartphone",
+	"price": 1299,
+	"description": "Smartphone com câmera de alta qualidade e desempenho rápido.",
+	"stock": 40,
+	"img": "./src/assets/img/smartphone-foto.jpg",
+	"reviews": [
+		{
+			"id": 1,
+			"name": "Rafael",
+			"rating": 5,
+			"comment": "Câmera excelente e muito rápido."
+		},
+		{
+			"id": 2,
+			"name": "Fernanda",
+			"rating": 4,
+			"comment": "Gostei muito, mas a bateria poderia durar mais."
+		}
+	]
 }
