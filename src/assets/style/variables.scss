@@ -22,8 +22,42 @@ $light-color: #98b9f2;
 $white-color: #ffffff;
 $mid-color: #6f9ceb; 
 
-$shadow: 0px 2px 10px 0px #00000036;
+$shadow-color: #00000036;
+
+$shadow: 0px 2px 10px 0px $shadow-color;
 
 $br-small: 4px;
 $br-medium: 8px;
 $br-large: 10px;
+
+//padding
+$btn-padding: 15px 30px;
+
+.btn {
+    font-family: $ff-semibold;
+    font-size: $text-medium;
+    border-radius: $br-small;
+    padding: $btn-padding;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: $white-color;
+    background-color: $primary-color;
+    &:hover {
+        background-color: $secondary-color;
+    }
+}
+
+.btn.exit-btn {
+    padding: 15px;
+    background-image: url('../assets/img/exit.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}

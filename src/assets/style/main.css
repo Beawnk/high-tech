@@ -56,3 +56,7 @@ p {
     padding: var(--top) var(--side);
     background-image: linear-gradient(to right, #141b41 30%, #ffffff 30%);
 }
+
+body:has(.products.open) {
+    overflow: hidden;
+}

@@ -1,5 +1,5 @@
 <template> 
-    <section class="products">
+    <section class="products" :class="{open: productModal}">
         <h1>Produtos</h1>
         <div class="product" v-for="product in products" :key="product.id" @click="showProductModal(product.id)">
             <div class="product-img">
@@ -11,7 +11,8 @@
             </div>
         </div>
     </section>
-    <Product v-if="productModal" :product-id="dataProductId"/>
+    <Transition name="fade"><Product v-if="productModal" :product-id="dataProductId" @toggle-modal="productModal = false" /></Transition>
+    
 </template>
 
 <script setup>
