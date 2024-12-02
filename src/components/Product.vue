@@ -8,6 +8,7 @@
                 <div class="product-info">
                     <h3>{{ product.name }}</h3>
                     <p>{{ product.price }}</p>
+                    <p>{{ product.stock }}</p>
                 </div>
                 <div class="product-description">
                     <h4>Descrição</h4>
@@ -17,15 +18,15 @@
                     <h4 @click="showReviews = !showReviews" >Reviews</h4>
                     <div class="review" v-for="review in product.reviews" :key="review.id" v-show="showReviews">
                         <div class="rating">
-                            <h5>{{ review.name }}</h5>
+                            <h5>{{ review.name }} |</h5>
                             <span>{{ review.rating }}/5</span>
                         </div>
                         <p class="comment">{{ review.comment }}</p>
                     </div>
                 </div>
-                <button class="btn buy-btn">Comprar</button>
-                <button class="btn exit-btn" @click="$emit('toggle-modal')"></button>
             </div>
+            <button class="btn buy-btn" @click="addItemToCart" :disabled="product.stock === 0">Comprar</button>
+            <button class="btn exit-btn" @click="$emit('toggle-modal')"></button>
         </div>
     </div>
 </template>
@@ -41,6 +42,7 @@ const emit = defineEmits(['toggle-modal']);
 const product = ref({});
 const showReviews = ref(false);
 const modalRef = ref(null);
+const cart = ref([]);
 
 function getProduct(id) {
     fetch(`./src/api/products/${id}/data.json`)
@@ -52,6 +54,13 @@ function getProduct(id) {
         .catch((error) => {
             console.error('Error fetching product:', error);
         });
+}
+
+function addItemToCart() {
+    product.value.stock--;
+    const {id, name, price} = product.value;
+    console.log(id, name, price);
+    cart.value.push({id, name, price});
 }
 
 onClickOutside(modalRef, () => {
@@ -124,12 +133,18 @@ $modal-padding: 20px;
         display: flex;
         gap: 20px;
         position: relative;
+        height: 600px;
+        overflow: auto;
         .product-img {
             width: 30%;
             img {
                 width: 100%;
-                height: auto;
+                height: 100%;
+                object-fit: cover;
             }
+        }
+        .product-wrap {
+            width: 70%;
         }
         .product-info {
             margin-bottom: 40px;
@@ -155,6 +170,8 @@ $modal-padding: 20px;
             }
         }
         .reviews {
+            max-width: 80%;
+            padding-bottom: 20px;
             h4 {
                 color: variables.$secondary-color;
                 font-size: variables.$subtitle-medium;
@@ -187,12 +204,14 @@ $modal-padding: 20px;
                 }
             }
             .review {
+                padding-bottom: 15px;
                 margin-bottom: 15px;
                 opacity: 0;
                 transform: translateY(-20px);
                 transition-property: overlay display opacity transform;
                 transition-duration: 0.5s;
                 transition-behavior: allow-discrete;
+                border-bottom: 1px solid variables.$shadow-color;
                 @include variables.animation('slide-down 0.5s');
                 .rating {
                     display: flex;
@@ -215,9 +234,15 @@ $modal-padding: 20px;
             }
         }
         .buy-btn {
-            position: absolute;
-            bottom: $modal-padding;
-            right: $modal-padding;
+            position: sticky;
+            top: 100%;
+            &:disabled {
+                filter: contrast(0.5);
+                cursor: not-allowed;
+                &:hover {
+                    background-color: variables.$primary-color;
+                }
+            }
         }
     }
 }

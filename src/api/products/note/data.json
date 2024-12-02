@@ -1,5 +1,5 @@
 {
-	"id": "notebook",
+	"id": "note",
 	"name": "Notebook",
 	"price": 3000,
 	"description": "Notebook com 8GB de RAM, 1TB de HD e processador i5.",
@@ -14,6 +14,30 @@
 		},
 		{
 			"id": 2,
+			"name": "Maria",
+			"rating": 4,
+			"comment": "Gostei muito, mas a bateria poderia durar mais."
+		},
+		{
+			"id": 3,
+			"name": "João",
+			"rating": 5,
+			"comment": "Ótimo notebook, rápido e leve."
+		},
+		{
+			"id": 4,
+			"name": "Maria",
+			"rating": 4,
+			"comment": "Gostei muito, mas a bateria poderia durar mais."
+		},
+		{
+			"id": 5,
+			"name": "João",
+			"rating": 5,
+			"comment": "Ótimo notebook, rápido e leve."
+		},
+		{
+			"id": 6,
 			"name": "Maria",
 			"rating": 4,
 			"comment": "Gostei muito, mas a bateria poderia durar mais."

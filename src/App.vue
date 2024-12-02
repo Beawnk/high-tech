@@ -1,18 +1,15 @@
 <template> 
+  <Header />
   <ProductsList />
 </template>
 
 <script setup>
 import ProductsList from './components/ProductsList.vue';
+import Header from './components/Header.vue';
 
-components: {ProductsList};
 </script>
 
 <style lang="scss" scoped>
 @use "./assets/style/variables";
-
-#app {
-  background-image: linear-gradient(to right, variables.$primary-color, variables.$secondary-color);
-}
 
 </style>

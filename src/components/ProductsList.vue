@@ -1,5 +1,5 @@
 <template> 
-    <section class="products" :class="{open: productModal}">
+    <section id="products" class="products" :class="{open: productModal}">
         <div class="product" v-for="product in products" :key="product.id" @click="showProductModal(product.id)">
             <div class="product-img">
                 <img :src="product.img" :alt="product.name" />
@@ -55,7 +55,7 @@ $products-max-width: 900px;
 
 .products {
     max-width: $products-max-width;
-    margin: 0 auto;
+    margin: variables.$top auto 0 auto;
     .product {
         cursor: pointer;
         display: flex;

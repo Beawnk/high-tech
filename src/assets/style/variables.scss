@@ -1,6 +1,9 @@
+@font-face {font-family: 'NunitoSans-regular'; src: url('/src/assets/fonts/NunitoSans_7pt-Regular.ttf');}
+@font-face {font-family: 'NunitoSans-semibold'; src: url('/src/assets/fonts/NunitoSans_7pt-SemiBold.ttf');}
+
 // fonts
-$ff-regular: 'Inter-regular', sans-serif;
-$ff-semibold: 'Inter-semibold', sans-serif;
+$ff-regular: 'NunitoSans-regular';
+$ff-semibold: 'NunitoSans-semibold';
 
 //font sizes
 $title-big: 36px;
@@ -36,6 +39,10 @@ $btn-padding: 15px 30px;
 //transition
 $transition: all 0.3s ease;
 
+$header-height: 80px;
+$side: 80px;
+$top: 40px;
+
 .btn {
     font-family: $ff-semibold;
     font-size: $text-medium;
@@ -49,6 +56,7 @@ $transition: all 0.3s ease;
     text-decoration: none;
     color: $white-color;
     background-color: $primary-color;
+    height: fit-content;
     &:hover {
         background-color: $secondary-color;
     }

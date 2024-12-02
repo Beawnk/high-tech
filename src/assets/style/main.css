@@ -9,6 +9,8 @@
     /* spacing  */
     --side: 80px;
     --top: 40px;
+
+    --header-height: 80px;
 }
 
 body {
@@ -43,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
 }
 
-a, p, label, span{
+a, p, label, span {
     font-family: var(--ff-regular);
 }
 
@@ -52,7 +54,7 @@ p {
 }
 
 #app {
-    padding: var(--top) var(--side);
+    padding: 0 var(--side);
     background-image: linear-gradient(to right, #141b41 30%, #ffffff 30%);
 }
 
