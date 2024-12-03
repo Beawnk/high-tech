@@ -7,7 +7,7 @@
             <div class="product-wrap">
                 <div class="product-info">
                     <h3>{{ product.name }}</h3>
-                    <p>{{ product.price }}</p>
+                    <p>{{ productNewPrice }}</p>
                     <p>{{ product.stock }}</p>
                 </div>
                 <div class="product-description">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn buy-btn" @click="addItemToCart" :disabled="product.stock === 0">Comprar</button>
+            <button class="btn buy-btn" @click="cart.addProduct(product);" :disabled="product.stock === 0">Comprar</button>
             <button class="btn exit-btn" @click="$emit('toggle-modal')"></button>
         </div>
     </div>
@@ -34,6 +34,7 @@
 <script setup>
 import { ref, watch, onMounted } from 'vue';
 import { formatCurrency } from "../composables/formatCurrency.js"; 
+import { useCartStore } from "../stores/cart.js";
 import { onClickOutside } from '@vueuse/core';
 
 const props = defineProps(['productId']);
@@ -42,25 +43,19 @@ const emit = defineEmits(['toggle-modal']);
 const product = ref({});
 const showReviews = ref(false);
 const modalRef = ref(null);
-const cart = ref([]);
+const cart = useCartStore();
+let productNewPrice = ref('');
 
 function getProduct(id) {
     fetch(`./src/api/products/${id}/data.json`)
         .then((res) => res.json())
         .then((data) => {
             product.value = data;
-            product.value.price = formatCurrency(product.value.price);
+            productNewPrice = formatCurrency(product.value.price);
         })
         .catch((error) => {
             console.error('Error fetching product:', error);
         });
-}
-
-function addItemToCart() {
-    product.value.stock--;
-    const {id, name, price} = product.value;
-    console.log(id, name, price);
-    cart.value.push({id, name, price});
 }
 
 onClickOutside(modalRef, () => {

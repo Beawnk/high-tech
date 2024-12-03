@@ -13,17 +13,22 @@
                 </ul>
             </nav>
             <div class="cart-total">
-                <button class="btn cart-btn">{{ cartTotal }}</button>
+                <button class="btn cart-btn">{{ formatCurrency(cart.cartTotal) + ' | ' +  cart.cartLength }}</button>
             </div>
         </div>
     </header>        
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted} from 'vue';
+import { useCartStore } from "../stores/cart.js";
+import { formatCurrency } from "../composables/formatCurrency.js"; 
 
-const cartTotal = ref(0);
+const cart = useCartStore();
 
+onMounted(() => {
+    cart.loadCart();
+});
 </script>
 
 <style lang="scss" scoped>
