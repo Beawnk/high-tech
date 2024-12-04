@@ -32,7 +32,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@use '../assets/style/variables';
+@use '../assets/style/variables' as v;
 
 $header-space: 500px;
 
@@ -40,10 +40,10 @@ $header-space: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: variables.$header-height;
+    height: v.$header-height;
     background-color: transparent;
-    color: variables.$primary-color;
-    font-size: variables.$subtitle-medium;
+    color: v.$primary-color;
+    font-size: v.$subtitle-medium;
     z-index: 99;
     .logo {
         width: 50px;
@@ -63,9 +63,9 @@ $header-space: 500px;
                         margin-right: 0;
                     }
                     a {
-                        transition: variables.$transition;
+                        transition: v.$transition;
                         &:hover {
-                            color: variables.$secondary-color;
+                            color: v.$secondary-color;
                         }
                     }
                 }
@@ -74,11 +74,11 @@ $header-space: 500px;
         .cart-total {
             .cart-btn {
                 background-color: transparent;
-                color: variables.$primary-color;
+                color: v.$primary-color;
                 display: flex;
                 align-items: center;
                 padding: 10px;
-                transition: variables.$transition;
+                transition: v.$transition;
                 &::after {
                     content: '';
                     background-image: url('../assets/img/cart.png');
@@ -89,10 +89,10 @@ $header-space: 500px;
                     background-position: center;
                     background-repeat: no-repeat;
                     margin-left: 10px;
-                    transition: variables.$transition;
+                    transition: v.$transition;
                 }
                 &:hover {
-                    color: variables.$secondary-color;
+                    color: v.$secondary-color;
                     &::after {
                         background-image: url('../assets/img/cart-hover.png');
                     }

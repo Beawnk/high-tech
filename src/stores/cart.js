@@ -3,8 +3,10 @@ import { ref, computed, watch } from 'vue';
 
 export const useCartStore = defineStore('cart', () => {
     const cartValue = ref([])
+    let alert = ref(false)
+    let alertMsg = ref('Produto adicionado ao carrinho.')
     const cartLength = computed(() => {
-        return cartValue.value.length
+        return cartValue.value.length;
     })
 
     const cartTotal = computed(() => {
@@ -21,6 +23,12 @@ export const useCartStore = defineStore('cart', () => {
         product.stock--;
         const {id, name, price} = product;
         cartValue.value.push({id, name, price});
+        alertMsg.value = `${name} adicionado ao carrinho.`;
+        alert.value = true;
+        
+        setTimeout(() => {
+            alert.value = false;
+        }, 2000)
     }
 
     function removeProduct(index) {
@@ -39,5 +47,15 @@ export const useCartStore = defineStore('cart', () => {
     }, {deep: true})
 
 
-    return {cartValue, cartLength, cartTotal, addProduct, removeProduct, loadCart, saveCart}
+    return {
+        cartValue, 
+        alert, 
+        alertMsg, 
+        cartLength, 
+        cartTotal, 
+        addProduct, 
+        removeProduct, 
+        loadCart, 
+        saveCart
+    }
 })

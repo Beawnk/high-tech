@@ -72,12 +72,12 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@use '../assets/style/variables';
+@use '../assets/style/variables' as v;
 
 $modal-width: 1200px;
 $modal-padding: 20px;
 
-@include variables.keyframes(slide-down) {
+@include v.keyframes(slide-down) {
     0% {
         opacity: 0;
         transform: translateY(-20px); 
@@ -88,7 +88,7 @@ $modal-padding: 20px;
     }
 }
 
-@include variables.keyframes(hide) {
+@include v.keyframes(hide) {
     0% {
         opacity: 1;
         transform: translateY(0px); 
@@ -115,16 +115,16 @@ $modal-padding: 20px;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: variables.$shadow-color;
+    background-color: v.$shadow-color;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 100;
     .modal-container {
         width: $modal-width;
-        background-color: variables.$white-color;
+        background-color: v.$white-color;
         padding: $modal-padding;
-        border-radius: variables.$br-medium;
+        border-radius: v.$br-medium;
         display: flex;
         gap: 20px;
         position: relative;
@@ -144,32 +144,32 @@ $modal-padding: 20px;
         .product-info {
             margin-bottom: 40px;
             h3 {
-                color: variables.$secondary-color;
-                font-size: variables.$title-medium;
+                color: v.$secondary-color;
+                font-size: v.$title-medium;
                 margin-bottom: 10px;
             }
             p {
-                color: variables.$primary-color;
-                font-size: variables.$text-big;
+                color: v.$primary-color;
+                font-size: v.$text-big;
             }
         }
         .product-description {
             margin-bottom: 40px;
             h4 {
-                color: variables.$secondary-color;
-                font-size: variables.$subtitle-medium;
+                color: v.$secondary-color;
+                font-size: v.$subtitle-medium;
             }
             p {
-                color: variables.$primary-color;
-                font-size: variables.$text-small;
+                color: v.$primary-color;
+                font-size: v.$text-small;
             }
         }
         .reviews {
             max-width: 80%;
             padding-bottom: 20px;
             h4 {
-                color: variables.$secondary-color;
-                font-size: variables.$subtitle-medium;
+                color: v.$secondary-color;
+                font-size: v.$subtitle-medium;
                 margin-bottom: 10px;
                 cursor: pointer;
                 display: flex;
@@ -184,7 +184,7 @@ $modal-padding: 20px;
                     background-position: center;
                     background-repeat: no-repeat;
                     margin-left: 5px;
-                    transition: variables.$transition;
+                    transition: v.$transition;
                 }
             }
             &.active {
@@ -206,25 +206,25 @@ $modal-padding: 20px;
                 transition-property: overlay display opacity transform;
                 transition-duration: 0.5s;
                 transition-behavior: allow-discrete;
-                border-bottom: 1px solid variables.$shadow-color;
-                @include variables.animation('slide-down 0.5s');
+                border-bottom: 1px solid v.$shadow-color;
+                @include v.animation('slide-down 0.5s');
                 .rating {
                     display: flex;
                     align-items: center;
                     margin-bottom: 5px;
                     h5 {
-                        color: variables.$primary-color;
-                        font-size: variables.$subtitle-small;
+                        color: v.$primary-color;
+                        font-size: v.$subtitle-small;
                         margin-right: 5px;
                     }
                     span {
-                        color: variables.$primary-color;
-                        font-size: variables.$text-small;
+                        color: v.$primary-color;
+                        font-size: v.$text-small;
                     }
                 }
                 .comment {
-                    color: variables.$primary-color;
-                    font-size: variables.$text-small;
+                    color: v.$primary-color;
+                    font-size: v.$text-small;
                 }
             }
         }
@@ -235,7 +235,7 @@ $modal-padding: 20px;
                 filter: contrast(0.5);
                 cursor: not-allowed;
                 &:hover {
-                    background-color: variables.$primary-color;
+                    background-color: v.$primary-color;
                 }
             }
         }

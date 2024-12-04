@@ -49,21 +49,21 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@use '../assets/style/variables';
+@use '../assets/style/variables' as v;
 
 $products-max-width: 900px;
 
 .products {
     max-width: $products-max-width;
-    margin: variables.$top auto 0 auto;
+    margin: v.$top auto 0 auto;
     .product {
         cursor: pointer;
         display: flex;
         margin-bottom: 20px;
         padding: 10px;
-        border-radius: variables.$br-medium;
-        box-shadow: variables.$shadow;
-        background-color: variables.$white-color;
+        border-radius: v.$br-medium;
+        box-shadow: v.$shadow;
+        background-color: v.$white-color;
         &:last-child {
             margin-bottom: 0;
         }
@@ -82,12 +82,12 @@ $products-max-width: 900px;
             justify-content: center;
             margin-left: 20px;
             h3 {
-                color: variables.$secondary-color;
-                font-size: variables.$subtitle-medium;
+                color: v.$secondary-color;
+                font-size: v.$subtitle-medium;
                 margin-bottom: 10px;
             }
             p {
-                color: variables.$primary-color;
+                color: v.$primary-color;
                 font-size: 18px;
             }
         }
