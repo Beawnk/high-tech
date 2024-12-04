@@ -26,7 +26,7 @@
                 </div>
             </div>
             <button class="btn buy-btn" @click="cart.addProduct(product);" :disabled="product.stock === 0">Comprar</button>
-            <button class="btn exit-btn" @click="$emit('toggle-modal')"></button>
+            <button class="btn exit-btn" @click="handleExitClick"></button>
         </div>
     </div>
 </template>
@@ -52,14 +52,31 @@ function getProduct(id) {
         .then((data) => {
             product.value = data;
             productNewPrice = formatCurrency(product.value.price);
+            changeRoute();
         })
         .catch((error) => {
             console.error('Error fetching product:', error);
         });
 }
 
-onClickOutside(modalRef, () => {
+function changeRoute() {
+    document.title = `HighTech | ${product.value.name}` || 'HighTech';
+    const hash = product.value.id || ''; 
+    history.pushState(null, null, `#${hash}`);
+}
+
+function removeRoute() {
+    document.title = 'HighTech';
+    history.pushState(null, null, '/');
+}
+
+function handleExitClick() {
     emit('toggle-modal');
+    removeRoute();
+}
+
+onClickOutside(modalRef, () => {
+    handleExitClick();
 });
 
 watch(() => props.productId, (newId) => {

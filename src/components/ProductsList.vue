@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import Product from "../components/Product.vue";
 import { formatCurrency } from "../composables/formatCurrency.js";
 
@@ -33,6 +33,7 @@ const getProducts = async () => {
         }
         const data = await res.json();
         products.value = data;
+        router();
     } catch (error) {
         console.error('Error fetching products:', error);
     }
@@ -42,6 +43,16 @@ const showProductModal = (id) => {
     dataProductId.value = id;
     productModal.value = true;
 };
+
+function router() {
+    const route = document.location.hash;
+    console.log(route);
+    if (route) {
+        const id = route.replace('#', '');
+        console.log(id);
+        showProductModal(id);
+    }
+}
 
 onMounted(() => {
     getProducts();
@@ -55,7 +66,8 @@ $products-max-width: 900px;
 
 .products {
     max-width: $products-max-width;
-    margin: v.$top auto 0 auto;
+    margin: 0 auto;
+    padding: v.$top 0;
     .product {
         cursor: pointer;
         display: flex;

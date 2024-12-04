@@ -5,7 +5,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
 import { useCartStore } from "./stores/cart.js";
 import ProductsList from './components/ProductsList.vue';
 import Alert from './components/Alert.vue';
