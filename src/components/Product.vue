@@ -91,9 +91,6 @@ onMounted(() => {
 <style lang="scss" scoped>
 @use '../assets/style/variables' as v;
 
-$modal-width: 1200px;
-$modal-padding: 20px;
-
 @include v.keyframes(slide-down) {
     0% {
         opacity: 0;
@@ -102,17 +99,6 @@ $modal-padding: 20px;
     100% { 
         opacity: 1;
         transform: translateY(0px); 
-    }
-}
-
-@include v.keyframes(hide) {
-    0% {
-        opacity: 1;
-        transform: translateY(0px); 
-    }
-    100% { 
-        opacity: 0;
-        transform: translateY(-20px); 
     }
 }
 
@@ -126,135 +112,113 @@ $modal-padding: 20px;
   opacity: 0;
 }
 
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: v.$shadow-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    .modal-container {
-        width: $modal-width;
-        background-color: v.$white-color;
-        padding: $modal-padding;
-        border-radius: v.$br-medium;
+
+.product-img {
+    width: 30%;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.product-wrap {
+    width: 70%;
+}
+.product-info {
+    margin-bottom: 40px;
+    h3 {
+        color: v.$secondary-color;
+        font-size: v.$title-medium;
+        margin-bottom: 10px;
+    }
+    p {
+        color: v.$primary-color;
+        font-size: v.$text-big;
+    }
+}
+.product-description {
+    margin-bottom: 40px;
+    h4 {
+        color: v.$secondary-color;
+        font-size: v.$subtitle-medium;
+    }
+    p {
+        color: v.$primary-color;
+        font-size: v.$text-small;
+    }
+}
+.reviews {
+    max-width: 80%;
+    padding-bottom: 20px;
+    h4 {
+        color: v.$secondary-color;
+        font-size: v.$subtitle-medium;
+        margin-bottom: 10px;
+        cursor: pointer;
         display: flex;
-        gap: 20px;
-        position: relative;
-        height: 600px;
-        overflow: auto;
-        .product-img {
-            width: 30%;
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+        align-items: center;
+        &::after {
+            content: "";
+            width: 15px;
+            height: 15px;
+            display: block;
+            background-image: url(../assets/img/open-arrow.png);
+            background-size: 10px;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-left: 5px;
+            transition: v.$transition;
+        }
+    }
+    &.active {
+        h4 {
+            &::after {
+                transform: rotate(-180deg);
             }
         }
-        .product-wrap {
-            width: 70%;
+        .review {
+            opacity: 1;
+            transform: translateY(0px);
         }
-        .product-info {
-            margin-bottom: 40px;
-            h3 {
-                color: v.$secondary-color;
-                font-size: v.$title-medium;
-                margin-bottom: 10px;
-            }
-            p {
+    }
+    .review {
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition-property: overlay, display, opacity, transform;
+        transition-duration: 0.5s;
+        transition-behavior: allow-discrete;
+        border-bottom: 1px solid v.$shadow-color;
+        @include v.animation('slide-down 0.5s');
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            h5 {
                 color: v.$primary-color;
-                font-size: v.$text-big;
+                font-size: v.$subtitle-small;
+                margin-right: 5px;
             }
-        }
-        .product-description {
-            margin-bottom: 40px;
-            h4 {
-                color: v.$secondary-color;
-                font-size: v.$subtitle-medium;
-            }
-            p {
+            span {
                 color: v.$primary-color;
                 font-size: v.$text-small;
             }
         }
-        .reviews {
-            max-width: 80%;
-            padding-bottom: 20px;
-            h4 {
-                color: v.$secondary-color;
-                font-size: v.$subtitle-medium;
-                margin-bottom: 10px;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                &::after {
-                    content: "";
-                    width: 15px;
-                    height: 15px;
-                    display: block;
-                    background-image: url(../assets/img/open-arrow.png);
-                    background-size: 10px;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    margin-left: 5px;
-                    transition: v.$transition;
-                }
-            }
-            &.active {
-                h4 {
-                    &::after {
-                        transform: rotate(-180deg);
-                    }
-                }
-                .review {
-                    opacity: 1;
-                    transform: translateY(0px);
-                }
-            }
-            .review {
-                padding-bottom: 15px;
-                margin-bottom: 15px;
-                opacity: 0;
-                transform: translateY(-20px);
-                transition-property: overlay display opacity transform;
-                transition-duration: 0.5s;
-                transition-behavior: allow-discrete;
-                border-bottom: 1px solid v.$shadow-color;
-                @include v.animation('slide-down 0.5s');
-                .rating {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 5px;
-                    h5 {
-                        color: v.$primary-color;
-                        font-size: v.$subtitle-small;
-                        margin-right: 5px;
-                    }
-                    span {
-                        color: v.$primary-color;
-                        font-size: v.$text-small;
-                    }
-                }
-                .comment {
-                    color: v.$primary-color;
-                    font-size: v.$text-small;
-                }
-            }
+        .comment {
+            color: v.$primary-color;
+            font-size: v.$text-small;
         }
-        .buy-btn {
-            position: sticky;
-            top: 100%;
-            &:disabled {
-                filter: contrast(0.5);
-                cursor: not-allowed;
-                &:hover {
-                    background-color: v.$primary-color;
-                }
-            }
+    }
+}
+.buy-btn {
+    position: sticky;
+    top: 100%;
+    &:disabled {
+        filter: contrast(0.5);
+        cursor: not-allowed;
+        &:hover {
+            background-color: v.$primary-color;
         }
     }
 }

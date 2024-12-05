@@ -42,6 +42,8 @@ $transition: all 0.3s ease;
 $header-height: 80px;
 $side: 80px;
 $top: 40px;
+$modal-width: 1200px;
+$modal-padding: 20px;
 
 .btn {
     font-family: $ff-semibold;
@@ -74,27 +76,92 @@ $top: 40px;
 }
 
 @mixin keyframes($animation-name) {
-    @-webkit-keyframes #{$animation-name} {
-      @content;
-    }
-    @-moz-keyframes #{$animation-name} {
-      @content;
-    }  
-    @-ms-keyframes #{$animation-name} {
-      @content;
-    }
-    @-o-keyframes #{$animation-name} {
-      @content;
-    }  
-    @keyframes #{$animation-name} {
-      @content;
-    }
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }  
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }  
+  @keyframes #{$animation-name} {
+    @content;
+  }
 }
 
 @mixin animation($str) {
-  -webkit-animation: #{$str};
-  -moz-animation: #{$str};
-  -ms-animation: #{$str};
-  -o-animation: #{$str};
-  animation: #{$str};      
+-webkit-animation: #{$str};
+-moz-animation: #{$str};
+-ms-animation: #{$str};
+-o-animation: #{$str};
+animation: #{$str};      
+}
+
+@include keyframes(slide-down) {
+  0% {
+      opacity: 0;
+      transform: translateY(-20px); 
+  }
+  100% { 
+      opacity: 1;
+      transform: translateY(0px); 
+  }
+}
+
+@include keyframes(slide-modal) {
+  0% {
+      transform: translateY(-1000px); 
+  }
+  100% { 
+      transform: translateY(0px); 
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $shadow-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  transition-property: overlay, display, opacity;
+  transition-duration: 1s;
+  transition-behavior: allow-discrete;
+  &.open {
+    opacity: 1;
+    @starting-style {
+      opacity: 0;
+    }
+    .modal-container {
+      opacity: 1;
+      transform: translateY(0px);
+      display: flex;
+    }
+  }
+  .modal-container {
+    width: $modal-width;
+    background-color: $white-color;
+    padding: $modal-padding;
+    border-radius: $br-medium;
+    gap: 20px;
+    position: relative;
+    height: 600px;
+    overflow: auto;
+    opacity: 0;
+    transform: translateY(-1000px);
+    transition-property: overlay, display, opacity, transform;
+    transition-duration: 0.8s;
+    transition-behavior: allow-discrete;
+    @include animation('slide-modal 0.8s');
+    display: none;
+  }
 }

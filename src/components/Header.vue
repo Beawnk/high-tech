@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+<header class="header">
         <div class="logo">
             <img src="../assets/img/HighTech.png" alt="HighTech">
         </div>
@@ -13,7 +13,7 @@
                 </ul>
             </nav>
             <div class="cart-total">
-                <button class="btn cart-btn">{{ formatCurrency(cart.cartTotal) + ' | ' +  cart.cartLength }}</button>
+                <button class="btn cart-btn" @click="handleCartOpen">{{ formatCurrency(cart.cartTotal) + ' | ' +  cart.cartLength }}</button>
             </div>
         </div>
     </header>        
@@ -24,7 +24,13 @@ import { ref, watch, onMounted} from 'vue';
 import { useCartStore } from "../stores/cart.js";
 import { formatCurrency } from "../composables/formatCurrency.js"; 
 
+const emit = defineEmits(['toggle-modal']);
+
 const cart = useCartStore();
+
+function handleCartOpen() {
+    emit('toggle-modal');
+}
 
 onMounted(() => {
     cart.loadCart();

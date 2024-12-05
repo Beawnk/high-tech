@@ -35,6 +35,10 @@ export const useCartStore = defineStore('cart', () => {
         cartValue.value.splice(index, 1);
     }
 
+    function removeWholeProduct(id) {
+        cartValue.value = cartValue.value.filter(item => item.id !== id);
+    }
+
     function loadCart() {
         const cart = localStorage.getItem('cart');
         if (cart) {
@@ -54,7 +58,8 @@ export const useCartStore = defineStore('cart', () => {
         cartLength, 
         cartTotal, 
         addProduct, 
-        removeProduct, 
+        removeProduct,
+        removeWholeProduct, 
         loadCart, 
         saveCart
     }

@@ -10,9 +10,7 @@
             </div>
         </div>
     </section>
-    <Transition name="fade">
-        <Product v-if="productModal" :product-id="dataProductId" @toggle-modal="productModal = false" />
-    </Transition>
+    <Product v-if="productModal" :product-id="dataProductId" @toggle-modal="productModal = false" :class="{open: productModal}" />
     
 </template>
 
@@ -46,10 +44,8 @@ const showProductModal = (id) => {
 
 function router() {
     const route = document.location.hash;
-    console.log(route);
     if (route) {
         const id = route.replace('#', '');
-        console.log(id);
         showProductModal(id);
     }
 }
