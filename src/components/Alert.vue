@@ -16,7 +16,7 @@
 .alert {
     background-color: v.$white-color;
     padding: 10px;
-    position: sticky;
+    position: fixed;
     top: calc(v.$header-height + 20px);
     left: 50%;
     transform: translateX(-50%);
