@@ -21,7 +21,7 @@ $text-small: 14px;
 // colors
 $primary-color: #141b41;
 $secondary-color: #306bac;
-$light-color: #98b9f2;
+$light-color: #c6cad6;
 $white-color: #ffffff;
 $mid-color: #6f9ceb; 
 
@@ -62,17 +62,29 @@ $modal-padding: 20px;
     &:hover {
         background-color: $secondary-color;
     }
-}
-
-.btn.exit-btn {
-    padding: 15px;
-    background-image: url('../assets/img/exit.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 12px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    &.small {
+      padding: 15px;
+      width: 20px;
+      height: 20px;
+    }
+    &.light {
+      background-color: $light-color;
+      color: $primary-color;
+      &:hover {
+        background-color: $primary-color;
+        color: $white-color;
+      }
+    }
+    &.exit-btn {
+        padding: 15px;
+        background-image: url('../assets/img/exit.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 12px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
 }
 
 @mixin keyframes($animation-name) {
