@@ -47,8 +47,13 @@ export const useCartStore = defineStore('cart', () => {
         }
     }
 
+    function controlStock() {
+        
+    }
+
     const saveCart = watch(cartValue, (cart) => {
         localStorage.setItem('cart', JSON.stringify(cart))
+        controlStock();
     }, {deep: true})
 
 

@@ -29,7 +29,7 @@
                     <h1>Seu carrinho está vazio</h1>
                 </div>
             </div>
-            <div class="cart-total" v-if="uniqueCartItems.length > 0">
+            <div class="cart-total" :class="{sticky: hasScroll}" v-if="uniqueCartItems.length > 0">
                 <h3>Total: {{ formatCurrency(cart.cartTotal) }}</h3>
             </div>
             <button class="btn exit-btn" @click="handleExitClick"></button>
@@ -48,6 +48,7 @@ const emit = defineEmits(['close-modal']);
 const cart = useCartStore();
 
 const modalRef = ref(null);
+const hasScroll = ref(false);
 
 function handleExitClick() {
     emit('close-modal');
@@ -55,7 +56,13 @@ function handleExitClick() {
 
 function itemQuantity(id) {
     return cart.cartValue.filter((item) => item.id === id).length;
-} 
+}
+
+function checkScroll() {
+    if (modalRef.value) {
+        hasScroll.value = modalRef.value.scrollHeight > modalRef.value.clientHeight;
+    }
+}
     
 const uniqueCartItems = computed(() => {
     const itemMap = new Map();
@@ -69,6 +76,14 @@ const uniqueCartItems = computed(() => {
 
 onClickOutside(modalRef, () => {
     handleExitClick();
+});
+
+watch(() => cart.cartValue, () => {
+    checkScroll();
+}, { deep: true });
+
+onMounted(() => {
+    checkScroll();
 });
 
 </script>
@@ -101,6 +116,13 @@ onClickOutside(modalRef, () => {
 .cart-total {
     padding: 20px;
     background-color: v.$secondary-color;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    &.sticky {
+        position: sticky;
+    }
     h3 {
         font-size: v.$subtitle-medium;
         color: v.$white-color;
