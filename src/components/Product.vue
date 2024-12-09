@@ -79,7 +79,7 @@ const isBuyButtonDisabled = computed(() => {
 });
 
 const buyButtonText = computed(() => {
-    return isBuyButtonDisabled.value ? 'Produto esgotado' : 'Comprar';
+    return isBuyButtonDisabled.value ? 'Esgotado' : 'Comprar';
     
 });
 
@@ -96,7 +96,7 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '../assets/style/variables' as v;
 
 @include v.keyframes(slide-down) {
@@ -110,19 +110,22 @@ onMounted(() => {
     }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
+:root {
+    --product-item-margin: 40px
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+@include v.media(768px) {
+    :root {
+        --product-item-margin: 20px;
+    }
 }
-
 
 .product-img {
     width: 30%;
+    @include v.media(768px) {
+        width: 100%;
+        height: 300px;
+    }
     img {
         width: 100%;
         height: 100%;
@@ -131,36 +134,42 @@ onMounted(() => {
 }
 .product-wrap {
     width: 70%;
+    @include v.media(768px) {
+        width: 100%;
+    }
 }
 .product-info {
-    margin-bottom: 40px;
+    margin-bottom: var(--product-item-margin);
     h3 {
         color: v.$secondary-color;
-        font-size: v.$title-medium;
+        font-size: var(--title-medium);
         margin-bottom: 10px;
     }
     p {
         color: v.$primary-color;
-        font-size: v.$text-big;
+        font-size: var(--text-big);
     }
 }
 .product-description {
-    margin-bottom: 40px;
+    margin-bottom: var(--product-item-margin);
     h4 {
         color: v.$secondary-color;
-        font-size: v.$subtitle-medium;
+        font-size: var(--subtitle-medium);
     }
     p {
         color: v.$primary-color;
-        font-size: v.$text-small;
+        font-size: var(--text-small);
     }
 }
 .reviews {
     max-width: 80%;
     padding-bottom: 20px;
+    @include v.media(768px) {
+        max-width: 100%;
+    }
     h4 {
         color: v.$secondary-color;
-        font-size: v.$subtitle-medium;
+        font-size: var(--subtitle-medium);
         margin-bottom: 10px;
         cursor: pointer;
         display: flex;
@@ -205,17 +214,17 @@ onMounted(() => {
             margin-bottom: 5px;
             h5 {
                 color: v.$primary-color;
-                font-size: v.$subtitle-small;
+                font-size: var(--subtitle-small);
                 margin-right: 5px;
             }
             span {
                 color: v.$primary-color;
-                font-size: v.$text-small;
+                font-size: var(--text-small);
             }
         }
         .comment {
             color: v.$primary-color;
-            font-size: v.$text-small;
+            font-size: var(--text-small);
         }
     }
 }

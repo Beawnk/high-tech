@@ -5,19 +5,6 @@
 $ff-regular: 'NunitoSans-regular';
 $ff-semibold: 'NunitoSans-semibold';
 
-//font sizes
-$title-big: 36px;
-$title-medium: 32px;
-$title-small: 28px;
-
-$subtitle-big: 24px;
-$subtitle-medium: 20px;
-$subtitle-small: 18px;
-
-$text-big: 18px;
-$text-medium: 16px;
-$text-small: 14px;
-
 // colors
 $primary-color: #141b41;
 $secondary-color: #306bac;
@@ -33,58 +20,36 @@ $br-small: 4px;
 $br-medium: 8px;
 $br-large: 10px;
 
-//padding
-$btn-padding: 15px 30px;
-
 //transition
 $transition: all 0.3s ease;
 
-$header-height: 80px;
-$side: 80px;
-$top: 40px;
-$modal-width: 1200px;
-$modal-padding: 20px;
+:root {
+  //font sizes
+  --title-big: 36px;
+  --title-medium: 32px;
+  --title-small: 28px;
 
-.btn {
-    font-family: $ff-semibold;
-    font-size: $text-medium;
-    border-radius: $br-small;
-    padding: $btn-padding;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    color: $white-color;
-    background-color: $primary-color;
-    height: fit-content;
-    &:hover {
-        background-color: $secondary-color;
-    }
-    &.small {
-      padding: 15px;
-      width: 20px;
-      height: 20px;
-    }
-    &.light {
-      background-color: $light-color;
-      color: $primary-color;
-      &:hover {
-        background-color: $primary-color;
-        color: $white-color;
-      }
-    }
-    &.exit-btn {
-        padding: 15px;
-        background-image: url('../assets/img/exit.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 12px;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
+  --subtitle-big: 24px;
+  --subtitle-medium: 20px;
+  --subtitle-small: 18px;
+
+  --text-big: 18px;
+  --text-medium: 16px;
+  --text-small: 14px;
+
+  //spacing
+  --btn-padding: 15px 30px;
+  --header-height: 80px;
+  --side: 80px;
+  --top: 40px;
+  --modal-width: 1200px;
+  --modal-padding: 20px;
+}
+
+@mixin media($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
 }
 
 @mixin keyframes($animation-name) {
@@ -111,6 +76,53 @@ $modal-padding: 20px;
 -ms-animation: #{$str};
 -o-animation: #{$str};
 animation: #{$str};      
+}
+
+.btn {
+    font-family: $ff-semibold;
+    font-size: var(--text-medium);
+    border-radius: $br-small;
+    padding: var(--btn-padding);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: $white-color;
+    background-color: $primary-color;
+    height: fit-content;
+    &:hover {
+        background-color: $secondary-color;
+    }
+    &.small {
+      padding: 15px;
+      width: 20px;
+      height: 20px;
+      @include media(480px) {
+        padding: 10px;
+        width: 15px;
+        height: 15px;
+      }
+    }
+    &.light {
+      background-color: $light-color;
+      color: $primary-color;
+      &:hover {
+        background-color: $primary-color;
+        color: $white-color;
+      }
+    }
+    &.exit-btn {
+        padding: 15px;
+        background-image: url('../assets/img/exit.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 12px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
 }
 
 @include keyframes(slide-down) {
@@ -160,9 +172,9 @@ animation: #{$str};
     }
   }
   .modal-container {
-    width: $modal-width;
+    width: var(--modal-width);
     background-color: $white-color;
-    padding: $modal-padding;
+    padding: var(--modal-padding);
     border-radius: $br-medium;
     gap: 20px;
     position: relative;
@@ -175,5 +187,37 @@ animation: #{$str};
     transition-behavior: allow-discrete;
     @include animation('slide-modal 0.8s');
     display: none;
+    @include media(768px) {
+      margin: 0 var(--side);
+      flex-direction: column;
+    }
+  }
+}
+
+@include media(768px) {
+  :root {
+    --title-medium: 30px;
+    --modal-width: 100%;
+    --side: 30px;
+    --top: 30px;
+  }
+}
+
+@include media(480px) {
+  :root {
+    --title-big: 30px;
+    --title-medium: 24px;
+    --title-small: 20px;
+  
+    --subtitle-big: 18px;
+    --subtitle-medium: 16px;
+    --subtitle-small: 14px;
+  
+    --text-big: 14px;
+    --text-medium: 12px;
+    --text-small: 10px;
+
+    --side: 20px;
+    --top: 20px;
   }
 }

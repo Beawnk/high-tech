@@ -46,10 +46,10 @@ $header-space: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: v.$header-height;
+    height: var(--header-height);
     background-color: transparent;
     color: v.$primary-color;
-    font-size: v.$subtitle-medium;
+    font-size: var(--subtitle-medium);
     z-index: 99;
     .logo {
         width: 50px;

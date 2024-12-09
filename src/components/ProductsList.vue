@@ -55,15 +55,23 @@ onMounted(() => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '../assets/style/variables' as v;
 
-$products-max-width: 900px;
+:root {
+    --products-max-width: 900px;
+}
+
+@include v.media(768px) {
+    :root {
+        --products-max-width: 100%;
+    }
+}
 
 .products {
-    max-width: $products-max-width;
+    max-width: var(--products-max-width);
     margin: 0 auto;
-    padding: v.$top 0;
+    padding: var(--top) 0;
     .product {
         cursor: pointer;
         display: flex;
@@ -78,6 +86,10 @@ $products-max-width: 900px;
         .product-img {
             width: 200px;
             height: 200px;
+            @include v.media(768px) {
+                width: 100px;
+                height: 100px;
+            }
             img {
                 width: 100%;
                 height: 100%;
@@ -91,12 +103,12 @@ $products-max-width: 900px;
             margin-left: 20px;
             h3 {
                 color: v.$secondary-color;
-                font-size: v.$subtitle-medium;
+                font-size: var(--subtitle-medium);
                 margin-bottom: 10px;
             }
             p {
                 color: v.$primary-color;
-                font-size: 18px;
+                font-size: var(--text-big);
             }
         }
     }

@@ -29,7 +29,7 @@
                     <h1>Seu carrinho está vazio</h1>
                 </div>
             </div>
-            <div class="cart-total" :class="{sticky: hasScroll}" v-if="uniqueCartItems.length > 0">
+            <div class="incart-total" :class="{sticky: hasScroll}" v-if="uniqueCartItems.length > 0">
                 <h3>Total: {{ formatCurrency(cart.cartTotal) }}</h3>
             </div>
             <button class="btn exit-btn" @click="handleExitClick"></button>
@@ -88,7 +88,7 @@ onMounted(() => {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use '../assets/style/variables' as v;
 
 .cart-modal.open {
@@ -108,12 +108,12 @@ onMounted(() => {
     left: 50%;
     transform: translate(-50%, -50%);
     h1 {
-        font-size: v.$title-small;
+        font-size: var(--title-small);
         color: v.$primary-color;
     }
 }
 
-.cart-total {
+.incart-total {
     padding: 20px;
     background-color: v.$secondary-color;
     position: absolute;
@@ -124,7 +124,7 @@ onMounted(() => {
         position: sticky;
     }
     h3 {
-        font-size: v.$subtitle-medium;
+        font-size: var(--subtitle-medium);
         color: v.$white-color;
     }
 }
@@ -138,6 +138,9 @@ onMounted(() => {
         justify-content: space-between;
         padding: 20px;
         border-bottom: 1px solid v.$shadow-color;
+        @include v.media(480px) {
+            padding: 10px;
+        }
         .cart-wrap {
             display: flex;
             align-items: center;
@@ -153,11 +156,11 @@ onMounted(() => {
             }
             .cart-item-info {
                 h3 {
-                    font-size: v.$subtitle-small;
+                    font-size: var(--subtitle-small);
                     color: v.$secondary-color;
                 }
                 p {
-                    font-size: v.$text-small;
+                    font-size: var(--text-small);
                     color: v.$primary-color;
                 }
             }
@@ -169,13 +172,22 @@ onMounted(() => {
                 display: flex;
                 align-items: center;
                 margin-right: 20px;
+                @include v.media(480px) {
+                    margin-right: 10px;
+                }
                 .btn-quantity {
                     background-size: 20px;
                     background-repeat: no-repeat;
                     background-position: center;
+                    @include v.media(480px) {
+                        background-size: 15px;
+                    }
                     &.remove {
                         background-image: url('../assets/img/less.png');
                         background-size: 15px;
+                        @include v.media(480px) {
+                            background-size: 10px;
+                        }
                         &:hover {
                             background-image: url('../assets/img/less-hover.png');
                         }
@@ -188,9 +200,12 @@ onMounted(() => {
                     }
                 }
                 span {
-                    margin: 0 1rem;
-                    font-size: v.$text-small;
+                    margin: 0 20px;
+                    font-size: var(--text-small);
                     color: v.$primary-color;
+                    @include v.media(480px) {
+                        margin: 0 10px;
+                    }
                 }
             }
             .btn-remove-all {
@@ -198,6 +213,9 @@ onMounted(() => {
                 background-repeat: no-repeat;
                 background-position: center;
                 background-image: url('../assets/img/trash.png');
+                @include v.media(480px) {
+                    background-size: 12px;
+                }
             }
         }
     }

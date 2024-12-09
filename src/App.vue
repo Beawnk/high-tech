@@ -17,10 +17,6 @@ const cart = useCartStore();
 
 const cartModal = ref(false);
 
-watch(() => cartModal, () => {
-    console.log(cartModal);
-});
-
 </script>
 
 <style lang="scss" scoped>

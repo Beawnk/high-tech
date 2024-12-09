@@ -17,7 +17,7 @@
     background-color: v.$white-color;
     padding: 10px;
     position: fixed;
-    top: calc(v.$header-height + 20px);
+    top: calc(var(--header-height) + 20px);
     left: 50%;
     transform: translateX(-50%);
     z-index: 200;
