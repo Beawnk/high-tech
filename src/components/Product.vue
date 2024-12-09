@@ -24,14 +24,14 @@
                     </div>
                 </div>
             </div>
-            <button class="btn buy-btn" @click="cart.addProduct(product);" :disabled="product.stock === 0 || cart.disabledProducts.has(product.id)">Comprar</button>
+            <button class="btn buy-btn" @click="cart.addProduct(product);" :disabled="isBuyButtonDisabled">{{ buyButtonText }}</button>
             <button class="btn exit-btn" @click="handleExitClick"></button>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted, computed } from 'vue';
 import { formatCurrency } from "../composables/formatCurrency.js"; 
 import { useCartStore } from "../stores/cart.js";
 import { onClickOutside } from '@vueuse/core';
@@ -73,6 +73,15 @@ function handleExitClick() {
     emit('toggle-modal');
     removeRoute();
 }
+
+const isBuyButtonDisabled = computed(() => {
+    return product.value.stock === 0 || cart.disabledProducts.has(product.value.id);
+});
+
+const buyButtonText = computed(() => {
+    return isBuyButtonDisabled.value ? 'Produto esgotado' : 'Comprar';
+    
+});
 
 onClickOutside(modalRef, () => {
     handleExitClick();

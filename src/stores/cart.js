@@ -60,19 +60,21 @@ export const useCartStore = defineStore('cart', () => {
     }
 
     function controlStock(productId) {
+        const productCount = cartValue.value.filter(item => item.id === productId).length;
+        console.log(productCount);
+        const product = cartValue.value.find(item => item.id === productId);
+        console.log(product);
         if (cartValue.value.length > 0) {
-            const productCount = cartValue.value.filter(item => item.id === productId).length;
-            console.log(productCount);
-            const product = cartValue.value.find(item => item.id === productId);
-            console.log(product);
             if (product && productCount >= product.initialStock ) {
                 disabledProducts.value.add(productId);
-                console.log('added')
+                console.log('added');
             } else {
                 disabledProducts.value.delete(productId);
                 console.log('deleted');
             }
             console.log(disabledProducts.value);
+        } else {
+            disabledProducts.value.clear();
         }
     }
 
