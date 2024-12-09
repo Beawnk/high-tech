@@ -4,6 +4,7 @@
 	"price": 3000,
 	"description": "Notebook com 8GB de RAM, 1TB de HD e processador i5.",
 	"stock": 12,
+	"initialStock": 12,
 	"img": "./src/assets/img/notebook-foto.jpg",
 	"reviews": [
 		{

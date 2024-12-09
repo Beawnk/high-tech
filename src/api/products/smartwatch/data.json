@@ -4,6 +4,7 @@
 	"price": 599,
 	"description": "Smartwatch com monitoramento de saúde e notificações inteligentes.",
 	"stock": 30,
+	"initialStock": 30,
 	"img": "./src/assets/img/smartwatch-foto.jpg",
 	"reviews": [
 		{

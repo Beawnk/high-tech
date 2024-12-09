@@ -8,7 +8,6 @@
                 <div class="product-info">
                     <h3>{{ product.name }}</h3>
                     <p>{{ productNewPrice }}</p>
-                    <p>{{ product.stock }}</p>
                 </div>
                 <div class="product-description">
                     <h4>Descrição</h4>
@@ -25,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn buy-btn" @click="cart.addProduct(product);" :disabled="product.stock === 0">Comprar</button>
+            <button class="btn buy-btn" @click="cart.addProduct(product);" :disabled="product.stock === 0 || cart.disabledProducts.has(product.id)">Comprar</button>
             <button class="btn exit-btn" @click="handleExitClick"></button>
         </div>
     </div>

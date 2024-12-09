@@ -4,6 +4,7 @@
 	"price": 1299,
 	"description": "Smartphone com câmera de alta qualidade e desempenho rápido.",
 	"stock": 40,
+	"initialStock": 40,
 	"img": "./src/assets/img/smartphone-foto.jpg",
 	"reviews": [
 		{
