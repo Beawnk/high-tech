@@ -25,7 +25,7 @@ const dataProductId = ref(null);
 
 const getProducts = async () => {
     try {
-        const res = await fetch("http://localhost:5173/src/api/products.json");
+        const res = await fetch("../src/api/products.json");
         if (!res.ok) {
             throw new Error('Network response was not ok');
         }

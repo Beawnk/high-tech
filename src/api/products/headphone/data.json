@@ -5,7 +5,7 @@
 	"description": "Headphone com cancelamento de ruído e som de alta qualidade.",
 	"stock": 50,
 	"initialStock": 50,
-	"img": "http://localhost:5173/src/assets/img/headphone-foto.jpg",
+	"img": "../src/assets/img/headphone-foto.jpg",
 	"reviews": [
 		{
 			"id": 1,
