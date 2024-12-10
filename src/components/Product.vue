@@ -46,7 +46,7 @@ const cart = useCartStore();
 let productNewPrice = ref('');
 
 function getProduct(id) {
-    fetch(`../src/api/products/${id}/data.json`)
+    fetch(`/src/api/products/${id}/data.json`)
         .then((res) => res.json())
         .then((data) => {
             product.value = data;

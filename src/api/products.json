@@ -3,30 +3,30 @@
 		"id": "note",
 		"name": "Notebook",
 		"price": 3000,
-		"img": "../src/assets/img/notebook.jpg"
+		"img": "/src/assets/img/notebook.jpg"
 	},
 	{
 		"id": "smartphone",
 		"name": "Smartphone",
 		"price": 1299,
-		"img": "../src/assets/img/smartphone.jpg"
+		"img": "/src/assets/img/smartphone.jpg"
 	},
 	{
 		"id": "tablet",
 		"name": "Tablet",
 		"price": 899,
-		"img": "../src/assets/img/tablet.jpg"
+		"img": "/src/assets/img/tablet.jpg"
 	},
 	{
 		"id": "smartwatch",
 		"name": "Smartwatch",
 		"price": 599,
-		"img": "../src/assets/img/smartwatch.jpg"
+		"img": "/src/assets/img/smartwatch.jpg"
 	},
 	{
 		"id": "headphone",
 		"name": "Headphone",
 		"price": 299,
-		"img": "../src/assets/img/headphone.jpg"
+		"img": "/src/assets/img/headphone.jpg"
 	}
 ]
