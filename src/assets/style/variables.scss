@@ -190,6 +190,7 @@ animation: #{$str};
     @include media(768px) {
       margin: 0 var(--side);
       flex-direction: column;
+      height: 80vh;
     }
   }
 }
