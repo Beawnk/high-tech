@@ -5,7 +5,7 @@
 	"description": "Smartphone com câmera de alta qualidade e desempenho rápido.",
 	"stock": 40,
 	"initialStock": 40,
-	"img": "./src/assets/img/smartphone-foto.jpg",
+	"img": "http://localhost:5173/src/assets/img/smartphone-foto.jpg",
 	"reviews": [
 		{
 			"id": 1,
