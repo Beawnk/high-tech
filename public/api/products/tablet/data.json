@@ -5,7 +5,7 @@
 	"description": "Tablet com tela de alta resolução e desempenho rápido.",
 	"stock": 20,
 	"initialStock": 20,
-	"img": "/src/assets/img/tablet-foto.jpg",
+	"img": "api/products/tablet/tablet-foto.jpg",
 	"reviews": [
 		{
 			"id": 1,
