@@ -11,7 +11,7 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#products">Products</a></li>
+                    <li><a href="#products" @click.prevent>Products</a></li>
                 </ul>
                 <div class="cart-total">
                     <button class="btn cart-btn" @click="handleCartOpen">{{ formatCurrency(cart.cartTotal) + ' | ' +  cart.cartLength }}</button>
