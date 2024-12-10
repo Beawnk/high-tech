@@ -13,12 +13,7 @@
     --header-height: 80px;
 }
 
-html {
-    height: 100%;
-}
-
 body {
-    height: 100%;
     padding: 0;
     margin: 0;
     overflow-x: hidden;
@@ -62,7 +57,6 @@ p {
 #app {
     padding: 0 var(--side);
     background-image: linear-gradient(to right, #141b41 30%, #ffffff 30%);
-    height: 100%;
 }
 
 body:has(.modal.open) {
