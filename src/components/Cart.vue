@@ -110,6 +110,7 @@ onMounted(() => {
     h1 {
         font-size: var(--title-small);
         color: v.$primary-color;
+        text-align: center;
     }
 }
 
