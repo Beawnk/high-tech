@@ -5,7 +5,7 @@
                 <h2>Carrinho</h2>
                 <div class="cart-items" v-if="uniqueCartItems.length > 0">
                     <div class="cart-item" v-for="(item, index) in uniqueCartItems" :key="item.id">
-                        <div class="cart-wrap">
+                        <a class="cart-wrap" :href="productLink(item.id)" target="_blank">
                             <div class="cart-item-img">
                             <img :src="item.img" :alt="item.name" />
                             </div>
@@ -13,7 +13,7 @@
                                 <h3>{{ item.name }}</h3>
                                 <p>{{ formatCurrency(item.price) }}</p>
                             </div>
-                        </div>
+                        </a>
                         <div class="cart-item-buttons">
                             <div class="cart-item-quantity">
                                 <button class="btn btn-quantity remove small light" @click="cart.removeProduct(index)"></button>
@@ -22,7 +22,6 @@
                             </div>
                             <button class="btn btn-remove-all small" @click="cart.removeWholeProduct(item.id)"></button>
                         </div>
-
                     </div>
                 </div>
                 <div class="no-items" v-else>
@@ -73,6 +72,10 @@ const uniqueCartItems = computed(() => {
     });
     return Array.from(itemMap.values());
 });
+
+const productLink = (id) => {
+    return `#${id}`;
+};
 
 onClickOutside(modalRef, () => {
     handleExitClick();

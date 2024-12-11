@@ -91,9 +91,9 @@ watch(() => props.productId, (newId) => {
     getProduct(newId);
 });
 
-onMounted(() => {
-    getProduct(props.productId);
-});
+// onMounted(() => {
+//     getProduct(props.productId);
+// });
 </script>
 
 <style lang="scss">

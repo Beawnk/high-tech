@@ -10,7 +10,7 @@
             </div>
         </div>
     </section>
-    <Product v-if="productModal" :product-id="dataProductId" @toggle-modal="productModal = false" :class="{open: productModal}" />
+    <Product v-show="productModal" :product-id="dataProductId" @toggle-modal="productModal = false" :class="{open: productModal}" />
     
 </template>
 
